@@ -1,0 +1,13 @@
+name: tres
+license: MIT
+licenselink: "https://github.com/trespaul/tres/main/LICENSE"
+description: ""
+homepage: ""
+demosite: ""
+tags: []
+features: []
+min_version: 0.41.0
+
+author:
+  name: Paul Joubert
+  homepage: "https://trespaul.com"

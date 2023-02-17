@@ -1,0 +1,17 @@
+{{ define "main" }}   
+
+{{- partial "header.html" . -}}
+
+<div class="flex flex-col place-content-center">
+  <h1
+    class="text-center font-bold"
+    style="font-size: 150pt; line-height: 1"
+  >404</h1>
+  {{ with site.Params.error404message }}
+    <p class="text-center italic">{{ . }}</p>
+  {{ else }}
+    <p class="text-center italic">This page does not exist.</p>
+  {{ end }}
+</div>
+
+{{ end }}

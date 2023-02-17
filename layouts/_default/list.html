@@ -1,0 +1,48 @@
+{{ define "main" }}
+
+{{- partial "header.html" . -}}
+
+<main class="container p-8 mt-8 mx-auto
+             grid grid-cols-1 gap-x-4 gap-y-24 items-start
+             xl:grid-cols-2"
+>
+
+<div>
+  {{ partial "page-header.html" . }}
+
+  {{ with .Params.prelinks }}
+    <p class="mt-8">
+      {{ range . }}
+        <a class="muted mr-8" href="{{ .link }}">
+          {{ .text }}
+        </a>
+      {{ end }}
+    </p>
+  {{ end }}
+
+  {{ with .Params.bio }}
+    <p class="mt-12">{{ . | markdownify }}</p>
+  {{ end }}
+
+  <section class="mt-12">
+
+    {{ $paginator := .Paginate .Data.Pages }}
+    {{ range $paginator.Pages }}
+      <div class="mb-12">
+        <h2 class="font-bold mb-4">
+          <a href="{{ .Permalink }}" class="muted">
+            {{ .Title }}
+          </a>
+        </h2>
+        {{ partial "page-metadata.html" . }}
+      </div>
+    {{ end }}
+    
+    <div>
+      {{ template "_internal/pagination.html" . }}
+    </div>
+  </section>
+</div>
+</main>
+
+{{ end }}

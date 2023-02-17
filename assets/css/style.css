@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* variables */
+:root {
+  --accent: #000;
+  --background: #fff;
+  --text: #000;
+  --element: #000;
+}
+
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,400;0,900;1,100;1,400;1,900&display=swap');
+
+/* basics */
+body {
+  @apply font-serif text-3xl
+    selection:bg-slate-900 selection:text-slate-50;
+  background-color: var(--background);
+  color: var(--text);
+
+}
+
+.btn {
+  font-variant: small-caps;
+}
+
+a, .btn {
+  @apply underline decoration-4 hover:no-underline;
+  text-decoration-color: var(--accent);
+}
+
+/* variant */
+a.muted {
+  @apply no-underline hover:text-stone-600
+}
+
+input, textarea {
+  border-color: var(--element);
+}
+
+/* on pages: lowercase when in two-column, bold and normal case when stacked */
+h1 {
+  @apply text-4xl font-bold /*xl:font-normal xl:lowercase*/
+}
+
+/* on pages: lowercase italic when two-column and h1 is lowercase and normal weight */
+.subtitle {
+  @apply font-normal xl:italic xl:lowercase;
+}
+
+/* reapply basics */
+h1 {
+  @apply mt-8 py-8
+}
+h2 {
+  @apply text-4xl mt-8 mb-4
+}
+
+h3 {
+  @apply italic mb-4 mt-6
+}
+
+p {
+  @apply mb-4 text-left
+    /* justify if screen big enough */
+    md:text-justify;
+  hyphens: auto;
+}
+
+blockquote {
+  @apply pl-4 border-l-4 mb-4;
+  border-color: var(--element);
+}
+
+ul {
+  @apply ml-8 mb-4 list-disc;
+}
+
+ol {
+  @apply ml-8 mb-4 list-decimal;
+}
+
+li > ul, li > ol {
+  @apply mb-0;
+}
+
+hr {
+  @apply my-8
+}
+
+/* TOC: extra space, no bullets, align to left, no link lines */
+#TableOfContents ul {
+  @apply list-none
+}
+
+#TableOfContents > ul {
+  @apply ml-0
+}
+
+#TableOfContents a {
+  @apply no-underline hover:text-gray-500
+  /* can I "@apply" a.muted? */
+}
+
+/* so heading in left and right column align */
+article.page > :first-child {
+  @apply mt-0
+}
+
+/*figure.gallery-item figcaption {
+  @apply hidden absolute bg-white bottom-0
+}
+
+figure.gallery-item:hover figcaption {
+  @apply block
+}*/
+
+/* number paragraphs */
+section.numberedcontent {
+  counter-reset: section;
+}
+
+section.numberedcontent p {
+  @apply overflow-auto;
+}
+
+section.numberedcontent p::after {
+  @apply text-gray-500;
+  counter-increment: section;
+  content: counter(section);
+  float: right;
+}

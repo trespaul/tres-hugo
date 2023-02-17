@@ -1,0 +1,20 @@
+<!-- TODO: fill open space between article and footer so that footer is at bottom of screen -->
+<footer class="flex flex-col content-end">
+  <p class="text-center text-xs mb-8">{{ site.Params.copyright }}</p>
+</footer>
+
+<!-- JS Plugins -->
+
+{{ $script := resources.Get "js/script.js"}}
+{{ if $script }}
+  {{ if .Site.IsServer }}
+    <script src="{{ $script.RelPermalink }}"></script>
+  {{ else }}
+    {{ $script := $script | minify | fingerprint }}
+    <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+  {{ end }}
+{{ end }}
+
+{{ range site.Params.plugins.js}}
+  <script src="{{ .link | absURL }}"></script>
+{{ end }}

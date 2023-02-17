@@ -1,0 +1,82 @@
+<form
+  name="{{ .Params.formName }}"
+  method="POST"
+  netlify
+  class="text-3xl mt-12"
+>
+
+  {{ range .Params.formFields }}
+    <div class="mb-4">
+
+      <!-- text input -->
+      {{ if eq .type "text" }}
+        <label>
+          <span>{{ .title }}</span>
+          <input
+            class="w-full border-4 p-2"
+            type="text"
+            name="{{ .id }}"
+            {{ if .required }}
+              required
+            {{ end }}
+          />
+        </label>
+      {{ end }}
+
+      <!-- text area -->
+      {{ if eq .type "textarea" }}
+          <label>
+            <span>{{ .title }}</span>
+            <textarea
+              class="w-full border-4 p-2 h-48"
+              name="{{ .id }}"
+              {{ if .required }}
+                required
+              {{ end }}
+            ></textarea>
+          </label>
+      {{ end }}
+
+      <!-- file upload -->
+      {{ if eq .type "file" }}
+          <label>
+            <div>{{ .title }}</div>
+            <input
+              name="{{ .id }}"
+              type="file"
+              class="text-lg cursor-pointer"
+              {{ if .required }}
+                required
+              {{ end }}
+            />
+          </label>
+      {{ end }}
+
+      <!-- selection -->
+      {{ if eq .type "selection" }}
+        <div>{{ .title }}</div>
+        <select
+          name="{{ .id }}"
+          class="text-lg border-4 p-2"
+          {{ if .required }}
+            required
+          {{end}}
+        >
+          {{ range .options }}
+          <option value="{{ . }}">{{ . }}</option>
+          {{ end }}
+        </select>
+      {{ end }}
+    </div>
+  {{ end }}
+
+  <!-- submit button -->
+  <button
+    class="btn mt-4"
+    type="submit"
+  >
+    {{ .Params.submitButtonTitle }}
+  </button>
+
+
+</form>

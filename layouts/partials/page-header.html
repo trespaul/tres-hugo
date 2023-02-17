@@ -1,0 +1,12 @@
+<section class="">
+  <h1
+    style="font-size: 50pt;
+           line-height: 1"
+    class="mt-0 py-0"
+  >
+    {{ .Title | markdownify }}
+  </h1>
+  {{ with .Params.subtitle }}
+    <p class="subtitle">{{ . | markdownify }}</p>
+  {{ end }}
+</section>

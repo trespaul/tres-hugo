@@ -1,0 +1,122 @@
+{{ define "main" }}
+
+<main class="mx-1">
+  {{ with .Params.hero }}
+
+    <!-- TODO: snap home page sections -->
+
+    <!-- hero image -->
+    <section class="min-h-screen flex flex-col place-content-center items-center w-full snap-always snap-center">
+      <img
+        class="w-full max-w-3xl"
+        src="{{ .image }}"
+        title="{{.copyright}}"
+      >
+      <div class="mt-12 flex gap-x-8 flex-wrap place-content-center">
+        {{ range site.Menus.main }}
+          <a
+            class="muted lowercase"
+            href="{{ .URL | relURL }}"
+          >
+            {{ .Name }}
+          </a>
+        {{ end }}
+      </div>
+    </section>
+
+    <!-- main title -->
+    <section class="min-h-screen snap-always snap-center">
+      <h1
+        class="uppercase font-bold break-all lg:break-normal
+               text-justify tracking-tighter
+               mb-4"
+        style="font-size: 150pt;
+               line-height: 0.75"
+      >{{.title}}</h1>
+    </section>
+
+    <!-- description -->
+    <section class="min-h-screen snap-always snap-center">
+      <p class=""
+        style="font-size: 50pt; line-height: 1"
+      >{{.description}}</p>
+    </section>
+  {{ end }}
+
+  <!-- info and links section -->
+  {{ with .Params.infoSection }}
+    <section
+      id="info"
+      class="mx-12 min-h-screen text-3xl
+             snap-always snap-center
+             grid grid-cols-1 gap-x-4 gap-y-4
+             items-start content-center
+             md:grid-cols-2 md:gap-y-24"
+    >
+      {{ range . }}
+
+        {{ if eq .type "links" }}
+          <h2
+            class="font-bold md:font-normal mt-0"
+            style="font-size: 50pt; line-height: 1"
+          >{{ .title }}</h2>
+
+          <div>
+            {{ with .pre }}
+              <p class="inline mr-4">{{ . }}</p>
+            {{ end }}
+            <div class="mb-8 inline-flex gap-x-4 flex-wrap">
+              {{ range .links }}
+                <a href={{ .URL }} class="btn">{{ .title }}</a>
+              {{ end }}
+            </div>
+          </div>
+        {{ end }}
+
+        {{ if eq .type "calendar" }}
+          {{ $calendar := .Site.Data.calendar }}
+          {{ if $calendar }}
+            {{ $next := index (where $calendar "isodate" ">=" (now.Format "2006-01-02")) 0 }}
+              {{ if $next }}
+                <h2
+                  class="font-bold md:font-normal mt-0"
+                  style="font-size: 50pt; line-height: 1"
+                >{{ .title }}</h2>
+                <div class="mb-8">
+                  <p class="inline mr-4">
+                    {{ $next.date }}: {{ $next.title }}.
+                  </p>
+                  <a href={{ .link }} class="btn">more</a>
+                </div>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+
+      {{ end }}
+    </section>
+  {{ end }}
+
+  <!-- contact form -->
+  {{ if .Params.endForm }}
+    <section
+      id="contact"
+      class="min-h-screen text-3xl mx-12
+             snap-always snap-center
+             grid grid-cols-1 gap-x-4 gap-y-4
+             md:grid-cols-2 md:gap-y-24
+             items-start content-center"
+    >
+      <h2
+        class="font-bold md:font-normal mt-0"
+        style="font-size: 50pt; line-height: 1"
+      >contact</h2>
+      <!-- -3rem cos partial has mt-12 for normal pages -->
+      <div style="margin-top: -3rem">
+        {{ partial "page-form.html" . }}
+      </div>
+    </section>
+  {{ end }}
+
+</main>
+
+{{ end }}

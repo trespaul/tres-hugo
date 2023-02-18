@@ -15,7 +15,7 @@
 
 /* basics */
 body {
-  @apply font-serif text-3xl
+  @apply font-sans text-3xl
     selection:bg-slate-900 selection:text-slate-50;
   background-color: var(--background);
   color: var(--text);

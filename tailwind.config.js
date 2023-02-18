@@ -2,7 +2,7 @@ module.exports = {
   content: ['layouts/**/*.html'],
   theme: {
     fontFamily: {
-      serif: ['Public Sans', 'sans'],
+      sans: ['Public\\ Sans', 'sans'],
     },
     extend: {},
   },

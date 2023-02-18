@@ -1,0 +1,10 @@
+{{ $pod:= .Get "pod" }}
+{{ $ep := .Get "ep" }}
+
+<iframe
+  src="https://anchor.fm/{{ $pod }}/embed/episodes/{{ $ep }}"
+  height="102px"
+  width="100%"
+  frameborder="0"
+  scrolling="no"
+></iframe>

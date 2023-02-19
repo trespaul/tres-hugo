@@ -39,6 +39,6 @@ to list things that are to be done.
 
 Other todos:
 
-- dark mode
+- manual dark mode switch?
 - css customisation (Params.plugins.css?)
 - taxonomies: sort out (links); make generic

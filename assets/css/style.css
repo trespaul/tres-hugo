@@ -2,21 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* variables */
-:root {
-  --accent: #000;
-  --background: #fff;
-  --text: #000;
-  --element: #000;
-}
-
 /* basics */
 body {
   @apply font-sans text-3xl
-    selection:bg-slate-900 selection:text-slate-50;
-  background-color: var(--background);
-  color: var(--text);
-
+         selection:bg-neutral-900 selection:text-neutral-200
+         bg-white text-neutral-900
+         dark:selection:bg-neutral-200 dark:selection:text-neutral-900
+         dark:bg-neutral-900 dark:text-neutral-200;
 }
 
 .btn {
@@ -24,17 +16,17 @@ body {
 }
 
 a, .btn {
-  @apply underline decoration-4 hover:no-underline;
-  text-decoration-color: var(--accent);
+  @apply underline decoration-2 hover:no-underline
+         decoration-neutral-900 dark:decoration-neutral-200;
 }
 
 /* variant */
 a.muted {
-  @apply no-underline hover:text-stone-600
+  @apply no-underline hover:text-neutral-600 dark:hover:text-neutral-400
 }
 
 input, textarea {
-  border-color: var(--element);
+  @apply border-neutral-900 dark:border-neutral-200;
 }
 
 /* on pages: lowercase when in two-column, bold and normal case when stacked */
@@ -67,8 +59,7 @@ p {
 }
 
 blockquote {
-  @apply pl-4 border-l-4 mb-4;
-  border-color: var(--element);
+  @apply pl-4 border-l-4 mb-4 border-neutral-900 dark:border-neutral-200;
 }
 
 ul {
@@ -97,7 +88,7 @@ hr {
 }
 
 #TableOfContents a {
-  @apply no-underline hover:text-gray-500
+  @apply no-underline hover:text-neutral-600 dark:hover:text-neutral-400
   /* can I "@apply" a.muted? */
 }
 
@@ -115,7 +106,7 @@ figure.gallery-item:hover figcaption {
 }*/
 
 .footnote-ref, .footnote-backref {
-  @apply no-underline hover:text-gray-500
+  @apply no-underline hover:text-neutral-600 dark:hover:text-neutral-400
 }
 
 /* number paragraphs */
@@ -128,7 +119,7 @@ article.numberedcontent p {
 }
 
 article.numberedcontent p::after {
-  @apply text-gray-500;
+  @apply text-neutral-600 dark:text-neutral-400;
   counter-increment: section;
   content: counter(section);
   float: right;

@@ -102,7 +102,7 @@ hr {
 }
 
 /* so heading in left and right column align */
-article.page > :first-child {
+article > :first-child {
   @apply mt-0 pt-0
 }
 
@@ -119,15 +119,15 @@ figure.gallery-item:hover figcaption {
 }
 
 /* number paragraphs */
-section.numberedcontent {
+article.numberedcontent {
   counter-reset: section;
 }
 
-section.numberedcontent p {
+article.numberedcontent p {
   @apply overflow-auto;
 }
 
-section.numberedcontent p::after {
+article.numberedcontent p::after {
   @apply text-gray-500;
   counter-increment: section;
   content: counter(section);

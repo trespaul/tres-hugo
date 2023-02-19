@@ -25,14 +25,11 @@
 
     <div>
       {{ if .Content }}
-        <section
+        <article
           {{ if .Params.paragraphNumbering }}
             class="numberedcontent"
           {{ end }}
-          {{ if eq .Params.type "article"}}
-            style="font-size: 15pt; line-height: 1.25"
-          {{ end }}
-        >{{ .Content }}</section>
+        >{{ .Content }}</article>
       {{ end }}
 
       {{ if .Params.endForm }}

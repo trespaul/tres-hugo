@@ -103,7 +103,7 @@ hr {
 
 /* so heading in left and right column align */
 article.page > :first-child {
-  @apply mt-0
+  @apply mt-0 pt-0
 }
 
 /*figure.gallery-item figcaption {
@@ -113,6 +113,10 @@ article.page > :first-child {
 figure.gallery-item:hover figcaption {
   @apply block
 }*/
+
+.footnote-ref, .footnote-backref {
+  @apply no-underline hover:text-gray-500
+}
 
 /* number paragraphs */
 section.numberedcontent {

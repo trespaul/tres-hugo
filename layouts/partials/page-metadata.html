@@ -1,6 +1,6 @@
 {{ if .Params.metadata }}
   {{ with .Params.author }}
-    <p class=""><a href="/authors/{{ . }}" class="muted">{{ . }}</a></p>
+    <p class="text-3xl mt-4"><a href="/authors/{{ . }}" class="muted">{{ . }}</a></p>
   {{ end }}
 
   <div class="my-6" style="font-size:12pt; line-height: 1">
@@ -22,7 +22,7 @@
         <a href="/tags/{{ . }}" class="muted ml-4">{{ . }}</a>
       {{ end }}
     </p>
-    <p class="" style="font-size: 12pt; line-height: 1">
+    <p class="text-base">
       {{ if .Params.abstract }}
         {{ .Params.abstract | markdownify }}
       {{ else }}

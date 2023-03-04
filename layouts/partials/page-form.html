@@ -6,16 +6,19 @@
 >
 
   {{ range .Params.formFields }}
-    <div class="mb-4">
+    <div class="mb-12">
 
-      <!-- text input -->
-      {{ if eq .type "text" }}
+      <!-- text or file inputs -->
+      {{ if or (eq .type "text") (eq .type "file") }}
         <label>
-          <span>{{ .title }}</span>
+          <span class="text-base">{{ .title }}</span>
           <input
-            class="w-full border-4 p-2"
-            type="text"
+            class="outline-none"
+            type="{{ .type }}"
             name="{{ .id }}"
+            {{ if .placeholder }}
+              placeholder="{{ .placeholder }}"
+            {{ end }}
             {{ if .required }}
               required
             {{ end }}
@@ -28,7 +31,7 @@
           <label>
             <span>{{ .title }}</span>
             <textarea
-              class="w-full border-4 p-2 h-48"
+              class="outline-none"
               name="{{ .id }}"
               {{ if .required }}
                 required
@@ -37,42 +40,28 @@
           </label>
       {{ end }}
 
-      <!-- file upload -->
-      {{ if eq .type "file" }}
-          <label>
-            <div>{{ .title }}</div>
-            <input
-              name="{{ .id }}"
-              type="file"
-              class="text-lg cursor-pointer"
-              {{ if .required }}
-                required
-              {{ end }}
-            />
-          </label>
-      {{ end }}
-
       <!-- selection -->
       {{ if eq .type "selection" }}
-        <div>{{ .title }}</div>
-        <select
-          name="{{ .id }}"
-          class="text-lg border-4 p-2"
-          {{ if .required }}
-            required
-          {{end}}
-        >
-          {{ range .options }}
-          <option value="{{ . }}">{{ . }}</option>
-          {{ end }}
-        </select>
+        <label>
+          <span>{{ .title }}</span>
+          <select
+            name="{{ .id }}"
+            {{ if .required }}
+              required
+            {{end}}
+          >
+            {{ range .options }}
+            <option value="{{ . }}">{{ . }}</option>
+            {{ end }}
+          </select>
+        </label>
       {{ end }}
     </div>
   {{ end }}
 
   <!-- submit button -->
   <button
-    class="btn mt-4"
+    class="btn mb-12"
     type="submit"
   >
     {{ .Params.submitButtonTitle }}

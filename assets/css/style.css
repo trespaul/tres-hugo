@@ -25,8 +25,44 @@ a.muted {
   @apply no-underline hover:text-neutral-600 dark:hover:text-neutral-400
 }
 
-input, textarea {
-  @apply border-neutral-900 dark:border-neutral-200;
+input[type='text'], textarea, select {
+  @apply w-full py-1
+         border-0 border-b-2
+         outline-none
+
+         border-neutral-600
+         focus:border-neutral-900
+         placeholder:border-neutral-600
+
+         dark:border-neutral-400
+         dark:focus:border-neutral-200
+         dark:placeholder:border-neutral-400;
+  background: none;
+}
+
+input[type='file'] {
+  @apply text-base text-neutral-600 dark:text-neutral-400
+}
+
+input[type="file"]::file-selector-button {
+  @apply cursor-pointer
+         text-neutral-900 dark:text-neutral-200
+         border-none
+         btn lowercase
+         px-0 mr-4;
+  background: none;
+  font-family: inherit;
+}
+
+select {
+  @apply text-base cursor-pointer
+         text-neutral-900 dark:text-neutral-200;
+  background: none;
+  font-family: inherit;
+}
+
+label span {
+  @apply text-base block
 }
 
 /* on pages: lowercase when in two-column, bold and normal case when stacked */

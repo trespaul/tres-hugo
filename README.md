@@ -41,4 +41,9 @@ Other todos:
 
 - manual dark mode switch?
 - css customisation (Params.plugins.css?)
-- taxonomies: sort out (links); make generic
+- taxonomies
+  - sort out (links plurals …)
+  - make generic
+- article type post better layout for reading
+  - font size
+  - `<aside>` elements for side notes etc.

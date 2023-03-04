@@ -1,29 +1,30 @@
 {{ define "main" }}
 
 <main class="mx-1">
+
+  <!-- TODO: snap home page sections -->
+
+  <section class="min-h-screen flex flex-col place-content-center items-center w-full snap-always snap-center">
+    <h1
+      style="font-size: clamp(35pt, 1rem + 20vw, 150pt);
+             line-height: 0.75;"
+      class="font-bold break-all lg:break-normal
+             text-justify tracking-tighter
+             mb-4"
+    >{{ .Params.title }}</h1>
+    <div class="mt-12 flex gap-x-8 flex-wrap place-content-center">
+      {{ range site.Menus.main }}
+        <a
+          class="muted lowercase"
+          href="{{ .URL | relURL }}"
+        >
+          {{ .Name }}
+        </a>
+      {{ end }}
+    </div>
+  </section>
+
   {{ with .Params.hero }}
-
-    <!-- TODO: snap home page sections -->
-
-    <!-- hero image -->
-    <section class="min-h-screen flex flex-col place-content-center items-center w-full snap-always snap-center">
-      <img
-        class="w-full max-w-3xl"
-        src="{{ .image }}"
-        title="{{.copyright}}"
-      >
-      <div class="mt-12 flex gap-x-8 flex-wrap place-content-center">
-        {{ range site.Menus.main }}
-          <a
-            class="muted lowercase"
-            href="{{ .URL | relURL }}"
-          >
-            {{ .Name }}
-          </a>
-        {{ end }}
-      </div>
-    </section>
-
     <!-- main title -->
     <section class="min-h-screen snap-always snap-center">
       <h1
